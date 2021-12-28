@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="todo">
+    <h1 class="todo__title">To Do List</h1>
+    <div class="todo__bar">
+      <div class="wrapper">
+        <input class="todo__input" type="text" [(ngModel)]="newTask" />
+        <button class="button button--add" (click)="addNewTask()">+</button>
+      </div>
+    </div>
+    <div class="todo__list">
+      <div class="todo__list--item" *ngFor="let task of tasks; let i = index">
+        <div class="item__text">          
+          <input class="checkbox" [id]="i" type="checkbox" (change)="onChange(i)" />
+
+          <label class="{{ task.isCompleted ? 'task done' : 'task' }}" [for]="i">{{
+            task.title
+          }}</label>
+        </div>
+        <button class="button button--remove" (click)="onRemove(i)">x</button>
+      </div>
+    </div>
+  </div>
+</div>
